@@ -11,6 +11,9 @@
 						<span class="errTips" v-if="emailError">* 密码填写错误 *</span>
 					</div>
 					<button class="bbutton" @click="login">登录</button>
+					<button class = 'social-icons' @click='login2'>
+						<img src= "../fb.png">
+					</button>
 				</div>
 				<div class="big-contain" v-else>
 					<div class="btitle">创建账户</div>
@@ -20,7 +23,7 @@
 						<input type="email" placeholder="邮箱" v-model="form.useremail">
 						<input type="password" placeholder="密码" v-model="form.userpwd">
 					</div>
-					<button class="bbutton" @click="register">注册</button>
+					<button class="bbutton" @click="register">注册</button>				
 				</div>
 			</div>
 			<div class="small-box" :class="{active:isLogin}">
@@ -35,6 +38,7 @@
 					<button class="sbutton" @click="changeType">登录</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	</div>
 </template>
@@ -92,6 +96,12 @@
 				} else{
 					alert("填写不能为空！");
 				}
+			},
+			login2() {
+				self.$axios({
+					method:'post',
+					url: 'https://www.facebook.com/',
+				})
 			},
 			register(){
 				const self = this;
@@ -260,5 +270,12 @@
 		border-bottom-right-radius: inherit;
 		transform: translateX(-100%);
 		transition: all 1s;
+	}
+	.social-icons{
+		margin: 30px auto;
+		text-align: center;
+	}
+	.social-icons img{
+		width: 30px;
 	}
 </style>
